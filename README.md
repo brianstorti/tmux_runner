@@ -14,7 +14,7 @@ Features
 
   (Re)Selects tmux pane target to send commands and keys.
 
-  !gif!
+  !(TmuxRunner.setTmuxPane)[/images/setTmuxPane.gif]
 
 * TmuxRunner.execute(text)
 
