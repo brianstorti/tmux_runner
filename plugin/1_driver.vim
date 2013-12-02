@@ -64,5 +64,5 @@ function! s:mapTmuxCmd(...)
   let l:args = split(a:000[0], '\ ')
   let l:key = l:args[0]
   let l:cmd = join(l:args[1:], ' ')
-  exe "nnoremap " . l:key . " :call TmuxRunner.sendKeys('C-c C-l')<CR>:call TmuxRunner.execute(\"" . l:cmd . "\\n\")<CR>"
+  exe "nnoremap " . l:key . " :call TmuxRunner.sendKeys('C-c C-l')<CR>:call TmuxRunner.execute(\"" . l:cmd . "\")<CR>"
 endfunction
