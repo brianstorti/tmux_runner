@@ -4,7 +4,7 @@
 "   TmuxRunner.execute('ruby' . expand('%:p') Execute current file with ruby
 function! TmuxRunner.execute(text)
   let oldbuffer = system(shellescape("tmux show-buffer"))
-  call <SID>setTmuxBuffer(a:text)
+  call <SID>setTmuxBuffer(a:text . "\n")
   call system("tmux paste-buffer -t " . self.target())
   call <SID>setTmuxBuffer(oldbuffer)
 endfunction
