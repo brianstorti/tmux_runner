@@ -24,7 +24,7 @@ function! s:disableAutoSegClientExtensions(file)
     let rspec_command .= 'CLIENT_EXTENSIONS_DISABLED=true '
   endif
 
-  let rspec_command .= 'rspec '
+  let rspec_command .= 'rspec'
 
   return rspec_command
 endfunction

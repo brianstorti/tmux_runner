@@ -19,7 +19,7 @@ function! TmuxRunner.run(scope)
     return
   endif
 
-  let self.lastCommand = self.runner.commandFor(thisFile, a:scope) . "\n"
+  let self.lastCommand = self.runner.commandFor(thisFile, a:scope)
 
   call self.sendKeys('C-c C-l')
   call self.execute(self.lastCommand)
