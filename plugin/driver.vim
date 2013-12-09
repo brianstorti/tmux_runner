@@ -53,6 +53,7 @@ function! TmuxRunner.setTmuxPane()
         \ self.tmux['window'] . "." .
         \ self.tmux['pane']
 endfunction
+command! SetTmuxPane call TmuxRunner.setTmuxPane()
 
 function! TmuxRunner.AutocompleteSession()
   let l:sessions = split(TmuxSessionNames(), "\n")

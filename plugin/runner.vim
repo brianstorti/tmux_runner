@@ -35,6 +35,7 @@ function! TmuxRunner.selectRunner()
   let selected = input('Choose a runner: ', '', 'customlist,RunnersCompletion')
   let self.runner = self.runners[selected]
 endfunction
+command! SelectTmuxRunner call TmuxRunner.selectRunner()
 
 function! RunnersCompletion(A, L, P)
   let runners = copy(keys(g:TmuxRunnerrunners))
