@@ -1,8 +1,10 @@
-function! s:Validator(file)
+let s:test_unit = { "name": "test_unit" }
+
+function! s:test_unit.validate(file)
   return (match(a:file, "_test.rb") != -1)
 endfunction
 
-function! s:CommandBuilder(file, scope)
+function! s:test_unit.commandFor(file, scope)
   if a:scope == "unscoped"
     let command = "rake test"
   else
@@ -33,11 +35,5 @@ function! s:GetCurrentTest()
   call winrestview(l:winview)
   return test_name
 endfunction
-
-let s:test_unit = {
-      \ "name": "test_unit",
-      \ "validate": function("s:Validator"),
-      \ "commandFor": function("s:CommandBuilder")
-      \ }
 
 call TmuxRunner.register(s:test_unit)

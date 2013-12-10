@@ -31,13 +31,13 @@ function! TmuxRunner.selectRunner()
     return
   endif
 
-  let g:TmuxRunnerrunners = self.runners
+  let g:TmuxRunner_runners = self.runners
   let selected = input('Choose a runner: ', '', 'customlist,RunnersCompletion')
   let self.runner = self.runners[selected]
 endfunction
 command! SelectTmuxRunner call TmuxRunner.selectRunner()
 
 function! RunnersCompletion(A, L, P)
-  let runners = copy(keys(g:TmuxRunnerrunners))
+  let runners = copy(keys(g:TmuxRunner_runners))
   return filter(runners, 'v:val =~ "' . a:A . '"')
 endfunction
