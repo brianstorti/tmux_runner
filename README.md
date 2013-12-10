@@ -10,47 +10,41 @@ Why TmuxRunner
 Features
 --------
 
-* TmuxRunner.setTmuxPane()
+* `TmuxRunner.setTmuxPane()` or `:SetTmuxPane`
 
   (Re)Selects tmux pane target to send commands and keys.
 
   ![TmuxRunner.setTmuxPane](/images/setTmuxPane.gif)
 
-* TmuxRunner.execute(text)
+* `TmuxRunner.execute(text)` or `:Tmux`
 
   Executes a text in tmux pane. This command automatically executes
   the text.
 
   ![TmuxRunner.execute](/images/execute.gif)
 
-* TmuxRunner.sendKeys(keys)
+* `TmuxRunner.sendKeys(keys)`
 
   Sends keys to tmux pane, you can send more than one combination of
   keys splitted by space.
 
   ![TmuxRunner.sendKeys](/images/sendKeys.gif)
 
-* TmuxRunner.register(runner)
+* `TmuxRunner.register(runner)`
 
   Registers a Runner
 
-* TmuxRunner.selectRunner()
+* `TmuxRunner.selectRunner()` or `:SelectTmuxRunner`
 
   ![TmuxRunner.selectRunner](/images/selectRunner.gif)
 
-* TmuxRunner.run(scope)
+* `TmuxRunner.run(scope)`
 
   Runs selected runner with given scope.
 
   ![TmuxRunner.run](/images/run.gif)
 
-* :Tmux
-
-  Easy way to send a text to tmux pane
-
-  ![TmuxRunner.Tmux](/images/Tmux.gif)
-
-* :MapTmuxCmd
+* `:MapTmuxCmd`
 
   Creates a map for a command in the current session.
 
