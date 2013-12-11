@@ -11,7 +11,7 @@ else
 endif
 
 function! TmuxRunner.setTmuxPane()
-  call tmux#set()
+  call tmux_selector#set()
 endfunction
 
 function! TmuxRunner.setRunner()

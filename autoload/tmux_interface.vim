@@ -1,7 +1,7 @@
 function! tmux_interface#execute(text)
   let oldbuffer = system(shellescape("tmux show-buffer"))
   call <SID>setTmuxBuffer(a:text . "\n")
-  call system("tmux paste-buffer -t " . tmux#target())
+  call system("tmux paste-buffer -t " . tmux_selector#target())
   call <SID>setTmuxBuffer(oldbuffer)
 endfunction
 
@@ -17,5 +17,5 @@ function! tmux_interface#sendKeys(keys)
 endfunction
 
 function! tmux_interface#executeKeys(keys)
-  call system("tmux send-keys -t " . tmux#target() . " " . a:keys)
+  call system("tmux send-keys -t " . tmux_selector#target() . " " . a:keys)
 endfunction

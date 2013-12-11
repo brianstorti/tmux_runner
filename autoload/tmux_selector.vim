@@ -1,12 +1,12 @@
-function! tmux#target()
+function! tmux_selector#target()
   if empty(g:TmuxRunnerData.tmux)
-    call tmux#set()
-  end
+    call tmux_selector#set()
+  endif
 
   return g:TmuxRunnerData.target
 endfunction
 
-function! tmux#set()
+function! tmux_selector#set()
   let g:TmuxRunnerData.tmux = {
         \ 'session': '',
         \ 'window': '',
