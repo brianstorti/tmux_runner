@@ -5,6 +5,8 @@ au VimEnter *
       \ endif
 
 function! s:TmuxRunner_Set(runner)
-  set ft=ruby
+  if empty(bufname('.'))
+    set ft=ruby
+  endif
   call runner_selector#autoselect(a:runner)
 endfunction
