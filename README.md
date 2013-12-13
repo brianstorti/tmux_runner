@@ -1,6 +1,8 @@
 TmuxRunner
 ==========
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kassio/tmux_runner/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 Just another plugin to send commands to tmux, based on tslime.vim
 
 Why TmuxRunner
