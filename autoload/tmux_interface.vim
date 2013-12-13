@@ -1,8 +1,14 @@
 function! tmux_interface#execute(text)
+  let g:TmuxRunnerData.lastCommand = a:text
   let oldbuffer = system(shellescape("tmux show-buffer"))
+
   call <SID>setTmuxBuffer(a:text . "\n")
   call system("tmux paste-buffer -t " . tmux_selector#target())
   call <SID>setTmuxBuffer(oldbuffer)
+endfunction
+
+function! tmux_interface#reExecute()
+  call tmux_interface#execute(g:TmuxRunnerData.lastCommand)
 endfunction
 
 function! s:setTmuxBuffer(text)

@@ -11,8 +11,8 @@ function! runner#run(scope)
     return
   endif
 
-  let g:TmuxRunnerData.lastCommand = g:TmuxRunnerData.runner.commandFor(thisFile, a:scope)
+  let cmd = g:TmuxRunnerData.runner.commandFor(thisFile, a:scope)
 
   call tmux_interface#sendKeys('C-c C-l')
-  call tmux_interface#execute(g:TmuxRunnerData.lastCommand)
+  call tmux_interface#execute(cmd)
 endfunction

@@ -6,7 +6,8 @@ else
         \ 'loaded': 1,
         \ 'runners': {},
         \ 'runner': '',
-        \ 'tmux': {}
+        \ 'tmux': {},
+        \ 'lastCommand': ''
         \ }
 endif
 
@@ -33,6 +34,10 @@ endfunction
 
 function! TmuxRunner.run(scope)
   call runner#run(a:scope)
+endfunction
+
+function! TmuxRunner.reExecute()
+  call tmux_interface#reExecute()
 endfunction
 
 "
