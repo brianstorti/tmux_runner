@@ -1,14 +1,12 @@
-function! tmux_interface#execute(text)
-  let g:TmuxRunnerData.lastCommand = a:text
+function! tmux_interface#execute(cmd, keep)
+  if a:keep
+    let g:TmuxRunnerData.lastCommand = a:cmd
+  end
   let oldbuffer = system(shellescape("tmux show-buffer"))
 
-  call <SID>setTmuxBuffer(a:text . "\n")
+  call <SID>setTmuxBuffer(a:cmd . "\n")
   call system("tmux paste-buffer -t " . tmux_selector#target())
   call <SID>setTmuxBuffer(oldbuffer)
-endfunction
-
-function! tmux_interface#reExecute()
-  call tmux_interface#execute(g:TmuxRunnerData.lastCommand)
 endfunction
 
 function! s:setTmuxBuffer(text)
@@ -18,10 +16,10 @@ endfunction
 
 function! tmux_interface#sendKeys(keys)
   for k in split(a:keys, '\s')
-    call tmux_interface#executeKeys(k)
+    call <SID>executeKeys(k)
   endfor
 endfunction
 
-function! tmux_interface#executeKeys(keys)
+function! s:executeKeys(keys)
   call system("tmux send-keys -t " . tmux_selector#target() . " " . a:keys)
 endfunction
