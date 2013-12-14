@@ -3,7 +3,7 @@ TmuxRunner
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kassio/tmux_runner/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-Just another plugin to send commands to tmux, based on tslime.vim
+(not)Just another plugin to send commands to tmux, based on [tslime.vim](https://github.com/jgdavey/tslime.vim)
 
 Why TmuxRunner
 --------------
@@ -80,5 +80,5 @@ Suggested Setup
         noremap <leader>rl :call TmuxRunner.run('current')<CR>
 
         " Kill current process, clear screen and repeat last runner command
-        noremap <leader>rr :call TmuxRunner.sendKeys('C-c C-l')<CR>
-              \ :call TmuxRunner.execute(TmuxRunner.lastCommand)<CR>
+        noremap <leader>rr :call TmuxRunner.sendKeys('C-c C-l') \|
+              \ call TmuxRunner.reExecute()<CR>
