@@ -7,10 +7,26 @@ function! runner_selector#runner()
 endfunction
 
 function! runner_selector#autoselect(runner)
+  call <SID>load_runner(a:runner)
   if !empty(g:TmuxRunnerData.runner)
     let g:TmuxRunnerData.runner = ''
   else
     let g:TmuxRunnerData.runner = g:TmuxRunnerData.runners[a:runner]
+  endif
+endfunction
+
+function! s:load_runner(runner)
+  if has_key(g:TmuxRunnerData.runners, a:runner)
+    return
+  endif
+
+  let runner_path = printf("ftplugin/**/%s.vim", a:runner)
+  let runner_file = globpath(&rtp, runner_path)
+
+  echom runner_file
+  if !empty(runner_file)
+    execute "source " . runner_file
+    echo a:runner . " runner loaded"
   endif
 endfunction
 
