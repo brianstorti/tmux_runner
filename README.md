@@ -8,6 +8,40 @@ TmuxRunner
 Why TmuxRunner
 --------------
 
+The main reason to write a new tmux plugin was to avoid the setup needed to run
+each program language test suit. Nowadays I use ruby/rails with rpsec, testunit,
+and minitest, and I'm trying to have some fun with Elixir.
+
+Before TmuxRunner I had a setup of keymaps for each test framework I wanted to
+run, now I have the same keys combination for every framework, I just
+need(sometimes) to select which framework I want to run.
+
+I said that sometimes because the runner can check the current "project"
+structure and autoselect the runner accordantly with the current structure, for
+example if you open the vim and in the current directory has a
+`spec/spec_helper.rb` the TmuxRunner will select the rspec runner for you.
+
+With tmux runner you can send any text/command or key's combination to a tmux
+pane, just like tslime and vimux. Moreover you can run your test suit based on 3
+scopes:
+
+* `unscoped` - run all you test suit.
+* `file` - run the current test file.
+* `current` - run the current test(tests if you're in a context)
+
+### The Runner
+
+The runner is a dictionary with 3 keys:
+
+* `name`: Just a string with the runner name, e.g. 'rspec'
+* `validate`: A function that receives the current file and validates if it's a
+valid test file.
+* `commandFor`: A function that receives the current file and a scope to build
+the command to be send to tmux.
+
+The runner file is located on `ftplugin` folder, and it's loaded by the file
+type. But it's possible to create a file on `ftdetect` to detect when autoload
+the runner independently of the current file type.
 
 Features
 --------
