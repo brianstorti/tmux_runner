@@ -9,39 +9,36 @@ Why TmuxRunner
 --------------
 
 The main reason to write a new tmux plugin was to avoid the setup needed to run
-each program language test suit. Nowadays I use ruby/rails with rpsec, testunit,
+each programming language test suit. Nowadays I use ruby/rails with rpsec, testunit,
 and minitest, and I'm trying to have some fun with Elixir.
 
-Before TmuxRunner I had a setup of keymaps for each test framework I wanted to
-run, now I have the same keys combination for every framework, I just
-need(sometimes) to select which framework I want to run.
+Before TmuxRunner I had a setup of keymaps for each language and testing framework I wanted to
+run, now I can have one setup that works for all of them.
 
-I said that sometimes because the runner can check the current "project"
-structure and autoselect the runner accordantly with the current structure, for
-example if you open the vim and in the current directory has a
-`spec/spec_helper.rb` the TmuxRunner will select the rspec runner for you.
+TmuxRunner can check the current project structure and autoselect the right testing runner. For instance,
+if there is a `spec/spec_helper.rb` file in the current directory, TmuxRunner will assume that your tests should
+be ran with `rspec`.
 
-With tmux runner you can send any text/command or key's combination to a tmux
-pane, just like tslime and vimux. Moreover you can run your test suit based on 3
+With TmuxRunner you can send any command or key combination to a tmux
+pane, just like `tslime` and `vimux`. Moreover you can run your test suit based on 3
 scopes:
 
-* `unscoped` - run all you test suit.
-* `file` - run the current test file.
-* `current` - run the current test(tests if you're in a context)
+* `unscoped`: Run your entire test suit.
+* `file`: Run the current test file.
+* `current`: Run the test under the cursor.
 
 ### The Runner
 
 The runner is a dictionary with 3 keys:
 
-* `name`: Just a string with the runner name, e.g. 'rspec'
-* `validate`: A function that receives the current file and validates if it's a
-valid test file.
+* `name`: Just a string with the runner name, e.g. 'rspec'.
+* `validate`: A function that receives the current file and check if it's a valid test file.
 * `commandFor`: A function that receives the current file and a scope to build
-the command to be send to tmux.
+the command that will be sent to tmux.
 
-The runner file is located on `ftplugin` folder, and it's loaded by the file
-type. But it's possible to create a file on `ftdetect` to detect when autoload
-the runner independently of the current file type.
+The runner file is located in the `ftplugin` directory, and it's loaded based on the file
+type. It's also possible to create a file in the `ftdetect` directory to select a specific runner
+based on your custom rules.
 
 Features
 --------
