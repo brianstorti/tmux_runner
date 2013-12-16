@@ -32,7 +32,7 @@ function! TmuxRunner.execute(cmd, ...)
 
   call tmux_interface#execute(a:cmd, keep)
 endfunction
-command! -nargs=* Tmux call TmuxRunner.execute('<Args>')
+command! -nargs=* Tmux call TmuxRunner.execute('<Args>', 0)
 
 function! TmuxRunner.reExecute(...)
   call tmux_interface#execute(g:TmuxRunnerData.lastCommand, 0)
