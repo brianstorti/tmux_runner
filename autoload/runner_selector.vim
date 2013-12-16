@@ -8,7 +8,9 @@ endfunction
 
 function! runner_selector#autoselect(runner)
   call <SID>load_runner(a:runner)
-  if !empty(g:TmuxRunnerData.runner)
+
+  if !empty(g:TmuxRunnerData.runner) &&
+        \ g:TmuxRunnerData.runner.name != a:runner
     let g:TmuxRunnerData.runner = ''
   else
     let g:TmuxRunnerData.runner = g:TmuxRunnerData.runners[a:runner]
@@ -23,7 +25,6 @@ function! s:load_runner(runner)
   let runner_path = printf("ftplugin/**/%s.vim", a:runner)
   let runner_file = globpath(&rtp, runner_path)
 
-  echom runner_file
   if !empty(runner_file)
     execute "source " . runner_file
     echo a:runner . " runner loaded"
@@ -35,7 +36,9 @@ function! runner_selector#user_select()
     return runner_selector#set(keys(g:TmuxRunnerData.runners)[0])
   endif
 
-  let selected = input('Choose a runner: ', '', 'customlist,runner_selector#autocomplete')
+  let selected = input('Choose a runner: ',
+        \ '',
+        \ 'customlist,runner_selector#autocomplete')
   return runner_selector#set(selected)
 endfunction
 
